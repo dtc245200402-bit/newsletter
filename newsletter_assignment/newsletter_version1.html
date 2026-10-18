@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trello Weekly — Newsletter Version 1</title>
+  <meta name="description" content="Newsletter mẫu với bảng màu xanh dương tươi sáng, dành cho cập nhật năng suất và làm việc nhóm.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0C66E4;
+      --primary-dark: #0747A6;
+      --secondary-color: #172B4D;
+      --accent-color: #36B37E;
+      --highlight-color: #FFAB00;
+      --page-bg: #F4F7FB;
+      --surface: #FFFFFF;
+      --text-color: #253858;
+      --muted-color: #5E6C84;
+      --border-color: #DFE7F2;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--page-bg); color: var(--text-color); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .newsletter { max-width: 920px; }
+    .topbar { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding: 1.25rem 0; }
+    .brand { display:flex; align-items:center; gap:.65rem; color:var(--secondary-color); font-weight:850; letter-spacing:.07em; font-size:.92rem; }
+    .brand-mark { width:30px; height:25px; border-radius:7px; background:var(--primary-color); position:relative; display:inline-block; transform:skew(-8deg); }
+    .brand-mark:before,.brand-mark:after { content:""; position:absolute; top:5px; bottom:5px; width:7px; background:#fff; border-radius:3px; }
+    .brand-mark:before { left:6px; }.brand-mark:after { right:6px; }
+    .issue { color:var(--muted-color); font-size:.8rem; }
+    .hero { position:relative; overflow:hidden; border-radius:24px; padding:clamp(2rem, 5vw, 4rem); background:linear-gradient(130deg, var(--primary-color), #4C9AFF 68%, #74C0FC); color:#fff; box-shadow:0 18px 45px rgba(12,102,228,.17); }
+    .hero:before { content:""; position:absolute; width:280px; height:280px; right:-65px; top:-85px; border:42px solid rgba(255,255,255,.14); border-radius:50%; }
+    .hero:after { content:""; position:absolute; width:160px; height:160px; right:95px; bottom:-110px; background:var(--highlight-color); border-radius:38px; transform:rotate(28deg); opacity:.95; }
+    .hero-content { position:relative; z-index:1; max-width:590px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:.5rem; text-transform:uppercase; font-size:.72rem; letter-spacing:.16em; font-weight:800; background:rgba(255,255,255,.16); padding:.5rem .8rem; border-radius:999px; }
+    .eyebrow-dot { width:7px; height:7px; border-radius:50%; background:#B3F5D7; }
+    .hero h1 { max-width:620px; font-size:clamp(2.2rem, 5vw, 4rem); line-height:1.04; letter-spacing:-.045em; font-weight:850; margin:1.25rem 0 1rem; }
+    .hero p { color:rgba(255,255,255,.9); max-width:500px; line-height:1.7; margin-bottom:1.6rem; }
+    .btn-light-custom { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; border:0; border-radius:10px; padding:.9rem 1.15rem; font-weight:800; color:var(--primary-dark); background:#fff; text-decoration:none; transition:transform .18s ease, box-shadow .18s ease; }
+    .btn-light-custom:hover { transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,.12); color:var(--primary-dark); }
+    .section-kicker { color:var(--primary-color); font-size:.72rem; text-transform:uppercase; letter-spacing:.15em; font-weight:850; }
+    .section-title { color:var(--secondary-color); font-size:clamp(1.45rem,3vw,2rem); font-weight:850; letter-spacing:-.035em; }
+    .intro { background:var(--surface); border:1px solid var(--border-color); border-radius:20px; padding:clamp(1.5rem,4vw,2.2rem); }
+    .feature-card { height:100%; border:1px solid var(--border-color); border-radius:18px; overflow:hidden; background:var(--surface); transition:transform .2s ease, box-shadow .2s ease; }
+    .feature-card:hover { transform:translateY(-4px); box-shadow:0 14px 28px rgba(23,43,77,.08); }
+    .feature-art { min-height:155px; display:flex; justify-content:center; align-items:center; position:relative; overflow:hidden; }
+    .art-blue { background:#E9F2FF; }.art-green { background:#E3FCEF; }
+    .mini-board { display:flex; align-items:flex-start; gap:9px; transform:rotate(-4deg); }
+    .mini-col { width:62px; padding:8px; border-radius:8px; background:#fff; box-shadow:0 5px 12px rgba(23,43,77,.08); }
+    .mini-line { height:6px; background:#C7D7F3; border-radius:5px; margin-bottom:6px; }
+    .mini-line.short { width:65%; }.mini-tag { height:12px; width:24px; border-radius:3px; background:var(--primary-color); margin-top:9px; }
+    .calendar { width:120px; padding:12px; border-radius:12px; background:#fff; box-shadow:0 8px 20px rgba(23,43,77,.1); transform:rotate(4deg); }
+    .calendar-head { height:16px; background:var(--accent-color); border-radius:5px; margin-bottom:9px; }
+    .calendar-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:5px; }
+    .calendar-grid span { height:15px; border-radius:4px; background:#D6F5E5; }.calendar-grid span:nth-child(3n) { background:#FFAB00; }
+    .feature-body { padding:1.4rem; }
+    .feature-number { width:31px; height:31px; display:grid; place-items:center; background:var(--page-bg); color:var(--primary-color); border-radius:9px; font-weight:850; font-size:.8rem; }
+    .feature-body h3 { color:var(--secondary-color); font-size:1.12rem; font-weight:800; margin:1rem 0 .6rem; }
+    .feature-body p { color:var(--muted-color); line-height:1.65; font-size:.94rem; margin-bottom:1rem; }
+    .text-link { color:var(--primary-color); text-decoration:none; font-weight:800; font-size:.9rem; }
+    .text-link:hover { color:var(--primary-dark); text-decoration:underline; }
+    .cta { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; padding:clamp(1.5rem,4vw,2.4rem); background:var(--secondary-color); color:#fff; border-radius:20px; }
+    .cta h2 { font-weight:850; letter-spacing:-.03em; font-size:clamp(1.35rem,3vw,1.8rem); margin:0 0 .5rem; }
+    .cta p { margin:0; color:#C1D1E8; line-height:1.6; }
+    .cta .btn-light-custom { flex-shrink:0; background:var(--highlight-color); color:#172B4D; }
+    footer { border-top:1px solid var(--border-color); color:var(--muted-color); font-size:.82rem; }
+    .footer-link { color:var(--primary-color); text-decoration:none; }
+    @media(max-width:575.98px) { .topbar { align-items:flex-start; flex-direction:column; }.hero { border-radius:18px; }.cta { align-items:flex-start; flex-direction:column; }.cta .btn-light-custom { width:100%; }.newsletter { padding-left:1rem; padding-right:1rem; } }
+    @media(prefers-reduced-motion:reduce) { * { transition:none !important; scroll-behavior:auto !important; } }
+  </style>
+</head>
+<body>
+  <main class="container newsletter py-3 py-md-4">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>TRELLO WEEKLY</span></div>
+      <div class="issue">BẢN TIN #08 <span aria-hidden="true">·</span> DÀNH CHO NHÓM SÁNG TẠO</div>
+    </header>
+
+    <section class="hero mb-5" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> Làm việc thông minh hơn</span>
+        <h1 id="hero-title">Một tuần rõ việc. Một nhóm nhẹ đầu.</h1>
+        <p>Những ý tưởng nhỏ giúp bạn biến danh sách việc cần làm thành tiến độ thật, mà không biến lịch làm việc thành một mê cung.</p>
+        <a class="btn-light-custom" href="#featured">Khám phá bản tin <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="intro mb-5" aria-labelledby="intro-title">
+      <p class="section-kicker mb-2">Chào tuần mới</p>
+      <h2 id="intro-title" class="section-title mb-3">Chào bạn, người thích mọi thứ có tổ chức!</h2>
+      <p class="mb-0" style="color:var(--muted-color);line-height:1.8;max-width:760px">Tuần này, hãy thử giảm bớt những lần hỏi “việc này đến đâu rồi?” bằng một bảng công việc dễ hiểu, một buổi lập kế hoạch ngắn và những ưu tiên được cả nhóm nhìn thấy. Bắt đầu từ ba gợi ý bên dưới.</p>
+    </section>
+
+    <section id="featured" class="mb-5" aria-labelledby="featured-title">
+      <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-4">
+        <div><p class="section-kicker mb-2">Góc thực hành</p><h2 id="featured-title" class="section-title mb-0">Ba cách để nhóm chạy trơn tru</h2></div>
+        <span class="small" style="color:var(--muted-color)">Đọc trong 4 phút</span>
+      </div>
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-4">
+          <article class="feature-card">
+            <div class="feature-art art-blue" aria-hidden="true"><div class="mini-board"><div class="mini-col"><div class="mini-line"></div><div class="mini-line short"></div><div class="mini-tag"></div></div><div class="mini-col"><div class="mini-line"></div><div class="mini-line"></div><div class="mini-line short"></div><div class="mini-tag" style="background:#36B37E"></div></div><div class="mini-col"><div class="mini-line"></div><div class="mini-tag" style="background:#FFAB00"></div></div></div></div>
+            <div class="feature-body"><span class="feature-number">01</span><h3>Chia nhỏ để dễ bắt đầu</h3><p>Biến một đầu việc lớn thành những bước đủ nhỏ để mỗi người biết mình cần làm gì tiếp theo.</p><a class="text-link" href="#cta">Xem cách làm <span aria-hidden="true">→</span></a></div>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <article class="feature-card">
+            <div class="feature-art art-green" aria-hidden="true"><div class="calendar"><div class="calendar-head"></div><div class="calendar-grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div></div>
+            <div class="feature-body"><span class="feature-number">02</span><h3>Lập kế hoạch vừa đủ</h3><p>Dành 15 phút đầu tuần để thống nhất ưu tiên, người phụ trách và thời hạn thực tế.</p><a class="text-link" href="#cta">Xem cách làm <span aria-hidden="true">→</span></a></div>
+          </article>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <article class="feature-card">
+            <div class="feature-art" style="background:#FFF4E5" aria-hidden="true"><div style="position:relative;width:145px;height:100px"><div style="position:absolute;inset:13px 18px 0 0;background:#fff;border:1px solid #FFE0B2;border-radius:12px;transform:rotate(-8deg)"></div><div style="position:absolute;inset:4px 3px 8px 20px;background:#fff;border:1px solid #FFE0B2;border-radius:12px;transform:rotate(6deg);padding:15px"><div style="height:8px;width:70%;background:#FFAB00;border-radius:5px;margin-bottom:10px"></div><div style="height:6px;width:94%;background:#DFE7F2;border-radius:5px;margin-bottom:7px"></div><div style="height:6px;width:62%;background:#DFE7F2;border-radius:5px"></div><div style="margin-top:11px;width:28px;height:20px;border-radius:6px;background:#36B37E"></div></div></div></div>
+            <div class="feature-body"><span class="feature-number">03</span><h3>Giữ cuộc họp gọn gàng</h3><p>Gửi trước mục tiêu và kết thúc bằng quyết định, người nhận việc cùng bước tiếp theo.</p><a class="text-link" href="#cta">Xem cách làm <span aria-hidden="true">→</span></a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="cta mb-5" aria-labelledby="cta-title">
+      <div><h2 id="cta-title">Sẵn sàng cho tuần làm việc mới?</h2><p>Chọn một thay đổi nhỏ và thử ngay cùng cả nhóm.</p></div>
+      <a class="btn-light-custom" href="https://trello.com/" target="_blank" rel="noopener noreferrer">Bắt đầu ngay <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <footer class="pt-4 pb-3 d-flex flex-column flex-sm-row justify-content-between gap-2">
+      <div><strong style="color:var(--secondary-color)">TRELLO WEEKLY</strong><div class="mt-1">Bản tin mẫu phục vụ bài tập phối màu UI/UX.</div></div>
+      <div class="text-sm-end">Bạn nhận email này vì yêu thích làm việc nhóm.<br><a class="footer-link" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Lên đầu trang ↑</a></div>
+    </footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

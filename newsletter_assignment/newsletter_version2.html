@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Workroom — Newsletter Version 2</title>
+  <meta name="description" content="Newsletter mẫu phong cách biên tập, sử dụng bảng màu tím mận, xanh ngọc và kem.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #55406D;
+      --primary-dark: #29213A;
+      --secondary-color: #2A9D8F;
+      --accent-color: #E76F51;
+      --highlight-color: #E9B44C;
+      --page-bg: #F6F0E8;
+      --surface: #FFFCF7;
+      --text-color: #29213A;
+      --muted-color: #6B6275;
+      --border-color: #E5DACE;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--page-bg); color:var(--text-color); font-family:Georgia, "Times New Roman", serif; }
+    .newsletter { max-width:920px; }
+    .masthead { border-top:5px solid var(--primary-dark); border-bottom:1px solid var(--border-color); padding:1.15rem 0; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+    .brand { font-family:ui-sans-serif,system-ui,sans-serif; color:var(--primary-dark); text-transform:uppercase; letter-spacing:.12em; font-size:.87rem; font-weight:900; }
+    .brand span { color:var(--accent-color); }
+    .issue { font-family:ui-sans-serif,system-ui,sans-serif; color:var(--muted-color); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; }
+    .hero { position:relative; overflow:hidden; background:var(--primary-dark); color:var(--page-bg); border-radius:4px; padding:clamp(2rem,5vw,4.4rem); }
+    .hero:before { content:""; position:absolute; height:245px; width:245px; right:-35px; top:-48px; border:1px solid rgba(246,240,232,.35); border-radius:50%; box-shadow:0 0 0 22px rgba(246,240,232,.035),0 0 0 48px rgba(246,240,232,.035),0 0 0 74px rgba(246,240,232,.035); }
+    .hero:after { content:""; position:absolute; width:78px; height:78px; right:125px; bottom:-21px; background:var(--accent-color); border-radius:50% 50% 7px 50%; transform:rotate(-24deg); }
+    .hero-inner { position:relative; z-index:1; max-width:650px; }
+    .eyebrow { display:inline-flex; gap:.65rem; align-items:center; color:#B8E5DD; text-transform:uppercase; letter-spacing:.2em; font:800 .7rem ui-sans-serif,system-ui,sans-serif; }
+    .eyebrow:before { content:""; width:24px; height:2px; background:var(--secondary-color); }
+    .hero h1 { font-size:clamp(2.5rem,6vw,4.5rem); letter-spacing:-.055em; line-height:.99; font-weight:700; margin:1.35rem 0 1.2rem; max-width:630px; }
+    .hero p { color:#D9D0E1; font-family:ui-sans-serif,system-ui,sans-serif; line-height:1.8; max-width:505px; font-size:.96rem; }
+    .editorial-button { display:inline-flex; justify-content:center; align-items:center; gap:.65rem; padding:.9rem 1.1rem; color:var(--primary-dark); background:var(--highlight-color); border:1px solid var(--highlight-color); text-decoration:none; font:800 .85rem ui-sans-serif,system-ui,sans-serif; transition:all .18s ease; }
+    .editorial-button:hover { color:#fff; background:var(--accent-color); border-color:var(--accent-color); }
+    .section-meta { color:var(--accent-color); text-transform:uppercase; letter-spacing:.18em; font:900 .68rem ui-sans-serif,system-ui,sans-serif; }
+    .section-title { color:var(--primary-dark); font-weight:700; font-size:clamp(1.8rem,4vw,2.6rem); line-height:1.08; letter-spacing:-.04em; }
+    .intro { border-top:1px solid var(--border-color); border-bottom:1px solid var(--border-color); padding:2rem 0; }
+    .intro p { max-width:760px; color:var(--muted-color); font: .97rem/1.9 ui-sans-serif,system-ui,sans-serif; }
+    .story-card { height:100%; border:1px solid var(--border-color); background:var(--surface); }
+    .story-visual { height:170px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+    .visual-plum { background:#E7DDEB; }.visual-teal { background:#D8EEE8; }.visual-coral { background:#F7DFD5; }
+    .note-stack { position:relative; width:148px; height:98px; }
+    .note { position:absolute; width:91px; height:72px; padding:12px; background:#FFFCF7; border:1px solid rgba(41,33,58,.09); box-shadow:0 8px 16px rgba(41,33,58,.08); }
+    .note:before { content:""; display:block; width:70%; height:5px; margin-bottom:7px; border-radius:4px; background:var(--secondary-color); }
+    .note:after { content:""; display:block; width:95%; height:4px; margin-bottom:5px; border-radius:4px; background:#D8D0DC; box-shadow:0 9px 0 #D8D0DC; }
+    .note.n1 { top:4px; left:5px; transform:rotate(-10deg); }.note.n2 { top:18px; left:48px; transform:rotate(8deg); }.note.n2:before { background:var(--accent-color); }
+    .clock-art { width:98px; height:98px; border:10px solid var(--secondary-color); border-radius:50%; position:relative; background:#FFFCF7; box-shadow:0 8px 20px rgba(41,33,58,.12); }
+    .clock-art:before { content:""; position:absolute; width:3px; height:29px; background:var(--primary-dark); top:13px; left:38px; border-radius:3px; transform:rotate(0deg); transform-origin:bottom; }
+    .clock-art:after { content:""; position:absolute; width:25px; height:3px; background:var(--accent-color); top:47px; left:38px; border-radius:3px; transform:rotate(-24deg); transform-origin:left; }
+    .spark { width:105px; height:105px; background:var(--highlight-color); clip-path:polygon(50% 0%,61% 34%,96% 22%,74% 51%,100% 78%,64% 72%,50% 100%,36% 72%,0% 78%,26% 51%,4% 22%,39% 34%); filter:drop-shadow(0 8px 9px rgba(41,33,58,.12)); }
+    .story-body { padding:1.45rem; }
+    .story-meta { font:800 .68rem ui-sans-serif,system-ui,sans-serif; color:var(--secondary-color); letter-spacing:.14em; text-transform:uppercase; }
+    .story-body h3 { color:var(--primary-dark); font-size:1.45rem; line-height:1.12; font-weight:700; margin:.8rem 0; }
+    .story-body p { color:var(--muted-color); font: .9rem/1.75 ui-sans-serif,system-ui,sans-serif; }
+    .read-link { display:inline-block; color:var(--primary-color); text-decoration:none; font:850 .82rem ui-sans-serif,system-ui,sans-serif; border-bottom:1px solid var(--primary-color); padding-bottom:3px; }
+    .read-link:hover { color:var(--accent-color); border-color:var(--accent-color); }
+    .quote-band { display:grid; grid-template-columns:70px 1fr; gap:1rem; align-items:start; background:#E5F1ED; padding:clamp(1.5rem,4vw,2.2rem); }
+    .quote-mark { color:var(--secondary-color); font-size:5rem; line-height:.8; }
+    .quote-band blockquote { color:var(--primary-dark); font-size:clamp(1.25rem,3vw,1.8rem); line-height:1.35; font-style:italic; margin:0; }
+    .quote-band p { color:var(--muted-color); font: .78rem ui-sans-serif,system-ui,sans-serif; margin:.8rem 0 0; letter-spacing:.08em; text-transform:uppercase; }
+    .closing { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; border-bottom:1px solid var(--border-color); padding:2.2rem 0; }
+    .closing h2 { font-size:clamp(1.6rem,3.5vw,2.1rem); font-weight:700; letter-spacing:-.035em; margin:0 0 .45rem; }
+    .closing p { color:var(--muted-color); font: .9rem/1.7 ui-sans-serif,system-ui,sans-serif; margin:0; }
+    footer { padding:1.4rem 0 1rem; display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; color:var(--muted-color); font: .78rem/1.7 ui-sans-serif,system-ui,sans-serif; }
+    .footer-link { color:var(--primary-color); text-decoration:none; }
+    @media(max-width:575.98px) { .masthead { align-items:flex-start; flex-direction:column; }.hero { border-radius:3px; }.closing { align-items:flex-start; flex-direction:column; }.closing .editorial-button { width:100%; }.quote-band { grid-template-columns:42px 1fr; }.quote-mark { font-size:3.8rem; } footer { flex-direction:column; } }
+    @media(prefers-reduced-motion:reduce) { * { transition:none !important; } }
+  </style>
+</head>
+<body>
+  <main class="container newsletter py-3 py-md-4">
+    <header class="masthead mb-4">
+      <div class="brand">THE <span>WORKROOM</span> / NOTES</div>
+      <div class="issue">Số 08 · Ý tưởng cho tuần này</div>
+    </header>
+
+    <section class="hero mb-5" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <span class="eyebrow">Ghi chú về cách làm việc</span>
+        <h1 id="hero-title">Ít hỗn loạn hơn. Nhiều khoảng trống để nghĩ.</h1>
+        <p>Một bản tin nhỏ dành cho những nhóm muốn làm việc rõ ràng, sáng tạo và bình tĩnh hơn, ngay cả khi danh sách công việc không chịu ngắn lại.</p>
+        <a href="#stories" class="editorial-button">Đọc số tuần này <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="intro mb-5" aria-labelledby="intro-title">
+      <p class="section-meta mb-3">Lời mở đầu / 01</p>
+      <h2 id="intro-title" class="section-title mb-3">Một hệ thống tốt không làm thay bạn. Nó giúp bạn tập trung.</h2>
+      <p class="mb-0">Công cụ không thể thay thế một mục tiêu rõ ràng, nhưng một không gian làm việc dễ hiểu có thể giảm đáng kể những câu hỏi lặp lại. Trong số này, chúng ta đi từ việc sắp xếp nhiệm vụ đến cách bảo vệ thời gian tập trung và giữ các cuộc họp có ích.</p>
+    </section>
+
+    <section id="stories" class="mb-5" aria-labelledby="stories-title">
+      <p class="section-meta mb-2">Ba ghi chú đáng đọc</p>
+      <h2 id="stories-title" class="section-title mb-4">Những thay đổi nhỏ, tác động thật</h2>
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-4">
+          <article class="story-card">
+            <div class="story-visual visual-plum" aria-hidden="true"><div class="note-stack"><div class="note n1"></div><div class="note n2"></div></div></div>
+            <div class="story-body"><div class="story-meta">01 / Quy trình</div><h3>Đưa công việc ra khỏi trí nhớ</h3><p>Ghi lại nhiệm vụ, người phụ trách và bước tiếp theo ở một nơi cả nhóm đều xem được.</p><a class="read-link" href="#closing">Đọc ghi chú →</a></div>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <article class="story-card">
+            <div class="story-visual visual-teal" aria-hidden="true"><div class="clock-art"></div></div>
+            <div class="story-body"><div class="story-meta">02 / Tập trung</div><h3>Để thời gian có ranh giới</h3><p>Gom việc tương tự vào cùng một khoảng thời gian và chừa chỗ cho những việc bất ngờ.</p><a class="read-link" href="#closing">Đọc ghi chú →</a></div>
+          </article>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <article class="story-card">
+            <div class="story-visual visual-coral" aria-hidden="true"><div class="spark"></div></div>
+            <div class="story-body"><div class="story-meta">03 / Hợp tác</div><h3>Kết thúc họp bằng quyết định</h3><p>Mỗi cuộc họp nên để lại một kết quả cụ thể, không chỉ thêm một cuộc họp vào lịch.</p><a class="read-link" href="#closing">Đọc ghi chú →</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-band mb-4" aria-label="Trích dẫn">
+      <div class="quote-mark" aria-hidden="true">“</div>
+      <div><blockquote>Rõ ràng là một hình thức tử tế: với đồng đội, với thời gian và với chính mình.</blockquote><p>Ghi chú của ban biên tập</p></div>
+    </section>
+
+    <section id="closing" class="closing mb-3" aria-labelledby="closing-title">
+      <div><h2 id="closing-title">Bắt đầu bằng một bước vừa sức.</h2><p>Chọn một ý tưởng, đưa vào bảng công việc và thử trong tuần này.</p></div>
+      <a class="editorial-button" href="https://trello.com/" target="_blank" rel="noopener noreferrer">Sắp xếp công việc ↗</a>
+    </section>
+
+    <footer>
+      <div><strong style="color:var(--primary-dark)">THE WORKROOM / NOTES</strong><br>Newsletter mẫu phục vụ bài tập phối màu UI/UX.</div>
+      <div>Không muốn nhận bản tin nữa? <a class="footer-link" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Quay về đầu trang ↑</a></div>
+    </footer>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
